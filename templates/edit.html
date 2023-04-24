@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit Product
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      <h5 class="card-title mb-0">Редактировать продукт</h5>
+    </div>
+    <div class="card-body">
+      <form action="{{ url_for('edit', pro_id=result.pro_id) }}" method="POST">
+        <div class="form-group">
+          <label for="category">Категория</label>
+          <input type="text" class="form-control" id="category" name="category" value="{{ result.category }}" required>
+        </div>
+        <div class="form-group">
+          <label for="pro_name">наименование товара</label>
+          <input type="text" class="form-control" id="pro_name" name="pro_name" value="{{ result.name }}" required>
+        </div>
+        <div class="form-group">
+          <label for="description">Описание</label>
+          <textarea class="form-control" id="description" rows="3" name="description" required>{{ result.description }}</textarea>
+        </div>
+        <div class="form-group">
+          <label for="price_range">Price Range</label>
+	    		<select class="form-control" name="price_range">
+	      			<option value="₽100-₽500">₽100-₽500</option>
+					<option value="₽500-₽1000">₽500-₽1000</option>
+					<option value="₽1000-₽2000">₽1000-₽2000</option>
+					<option value="₽2000-₽5000">₽2000-₽5000</option>
+					<option value="₽5000-₽10000">₽5000-₽10000</option>
+	    		</select>
+	  		</div>
+        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
